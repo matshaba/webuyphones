@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - WeBuyPhones</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --blue: #0071E3;
+            --dark: #1D1D1F;
+            --gray: #86868B;
+            --light: #F5F5F7;
+            --green: #34C759;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Segoe UI', sans-serif;
+            background: #fff;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            z-index: 9999;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        .nav-inner {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 22px;
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 12px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .hero {
+            margin-top: 44px;
+            background: linear-gradient(135deg, var(--blue) 0%, #0077ED 100%);
+            padding: 120px 22px 80px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            font-weight: 700;
+            letter-spacing: -3px;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 28px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.4;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 60px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 56px;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 17px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 100px 22px;
+        }
+
+        .section {
+            margin-bottom: 100px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: -2px;
+            margin-bottom: 24px;
+        }
+
+        .section-text {
+            font-size: 19px;
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 24px;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .value-card {
+            background: var(--light);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .value-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .value-title {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .value-text {
+            font-size: 17px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .transparency-box {
+            background: linear-gradient(135deg, #f8f8f8 0%, var(--light) 100%);
+            padding: 60px;
+            border-radius: 24px;
+            margin: 60px 0;
+        }
+
+        .transparency-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .pricing-breakdown {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .pricing-item {
+            text-align: center;
+            padding: 32px;
+            background: white;
+            border-radius: 16px;
+        }
+
+        .pricing-percentage {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--blue);
+            margin-bottom: 12px;
+        }
+
+        .pricing-label {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .pricing-desc {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 40px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--light);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 80px 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+
+        .timeline-content {
+            text-align: right;
+        }
+
+        .timeline-content.right {
+            text-align: left;
+        }
+
+        .timeline-year {
+            background: var(--blue);
+            color: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .timeline-text {
+            font-size: 16px;
+            color: var(--gray);
+        }
+
+        .location-section {
+            background: var(--light);
+            padding: 80px 60px;
+            border-radius: 24px;
+        }
+
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 32px;
+        }
+
+        .location-details {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .location-icon {
+            font-size: 24px;
+            width: 40px;
+            flex-shrink: 0;
+        }
+
+        .location-text {
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .location-text strong {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .map-placeholder {
+            background: #ddd;
+            border-radius: 16px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: #999;
+        }
+
+        .trust-badges {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin: 60px 0;
+        }
+
+        .badge {
+            text-align: center;
+            padding: 32px 20px;
+            background: var(--light);
+            border-radius: 16px;
+        }
+
+        .badge-icon {
+            font-size: 40px;
+            margin-bottom: 16px;
+        }
+
+        .badge-title {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .badge-text {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark) 0%, #2D2D2F 100%);
+            padding: 80px 60px;
+            border-radius: 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .cta-section h3 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 21px;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 16px 36px;
+            border-radius: 980px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            border: none;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        footer {
+            background: var(--light);
+            padding: 60px 22px 40px;
+            margin-top: 100px;
+        }
+
+        .footer-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            opacity: 0.6;
+        }
+
+        .footer-col a {
+            display: block;
+            color: var(--dark);
+            text-decoration: none;
+            font-size: 12px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        .footer-col a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 40px; }
+            .hero p { font-size: 19px; }
+            .stats { flex-direction: column; gap: 40px; }
+            .two-column { grid-template-columns: 1fr; }
+            .pricing-breakdown { grid-template-columns: 1fr; }
+            .location-grid { grid-template-columns: 1fr; }
+            .timeline-item { grid-template-columns: 1fr; }
+            .timeline::before { display: none; }
+            .timeline-content { text-align: left !important; }
+            .trust-badges { grid-template-columns: repeat(2, 1fr); }
+            .cta-buttons { flex-direction: column; }
+            .nav-links { display: none; }
+            .footer-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <div class="logo" onclick="window.location.href='index.html'">WeBuyPhones</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="sell.html">Sell</a></li>
+                <li><a href="tutorial.html">How It Works</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="hero">
+        <h1>Trusted Since 2019</h1>
+        <p>Making premium technology accessible while building a sustainable future for electronics</p>
+        
+        <div class="stats">
+            <div class="stat">
+                <span class="stat-number">50,000+</span>
+                <span class="stat-label">Happy Customers</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">6</span>
+                <span class="stat-label">Years in Business</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Satisfaction Rate</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Our Story -->
+        <div class="section">
+            <h2 class="section-title">Our Story</h2>
+            <p class="section-text">
+                WeBuyPhones was founded in 2019 in Warsaw, Poland with a simple mission: make premium technology accessible to everyone while reducing electronic waste. What started as a small electronics shop has grown into one of Poland's most trusted pre-owned device marketplaces.
+            </p>
+            <p class="section-text">
+                We believe everyone deserves access to quality technology without the premium price tag. By giving devices a second life, we're not just saving our customers money—we're helping build a more sustainable future for our planet.
+            </p>
+            <p class="section-text">
+                Today, we operate both online and through our physical retail location in Warsaw, serving customers across Poland and the European Union. Every device that passes through our doors undergoes rigorous inspection by certified technicians, ensuring you receive only the highest quality products.
+            </p>
+        </div>
+
+        <!-- Timeline -->
+        <div class="section">
+            <h2 class="section-title" style="text-align: center;">Our Journey</h2>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">The Beginning</h3>
+                        <p class="timeline-text">Founded in Warsaw with a 30m² retail space and a vision to make technology accessible</p>
+                    </div>
+                    <div class="timeline-year">2019</div>
+                    <div></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div></div>
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content right">
+                        <h3 class="timeline-title">Going Digital</h3>
+                        <p class="timeline-text">Launched our online platform, reaching customers across Poland</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Expansion</h3>
+                        <p class="timeline-text">Expanded to 150m² store and began EU-wide shipping</p>
+                    </div>
+                    <div class="timeline-year">2022</div>
+                    <div></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div></div>
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content right">
+                        <h3 class="timeline-title">Certification</h3>
+                        <p class="timeline-text">Achieved ISO certification and partnered with major brands</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">50,000 Customers</h3>
+                        <p class="timeline-text">Reached milestone of 50,000 satisfied customers and 100+ 5-star reviews</p>
+                    </div>
+                    <div class="timeline-year">2025</div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Our Values -->
+        <div class="section">
+            <h2 class="section-title">What We Stand For</h2>
+            
+            <div class="two-column">
+                <div class="value-card">
+                    <div class="value-icon">💎</div>
+                    <h3 class="value-title">Quality First</h3>
+                    <p class="value-text">
+                        Every device undergoes a comprehensive 50-point inspection. We never compromise on quality, ensuring you receive devices that work perfectly and look great.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3 class="value-title">Transparency</h3>
+                    <p class="value-text">
+                        We believe in complete honesty. From our pricing model to device conditions, we provide full transparency so you can buy and sell with confidence.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3 class="value-title">Sustainability</h3>
+                    <p class="value-text">
+                        Every device we sell is one less in a landfill. We're committed to the circular economy and reducing the environmental impact of technology.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3 class="value-title">Customer First</h3>
+                    <p class="value-text">
+                        Your satisfaction is our priority. With 12-month warranties, 30-day returns, and responsive support, we're here for you every step of the way.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Transparency -->
+        <div class="transparency-box">
+            <h2 class="transparency-title">Our Business Model: Complete Transparency</h2>
+            
+            <div class="pricing-breakdown">
+                <div class="pricing-item">
+                    <div class="pricing-percentage">~55%</div>
+                    <div class="pricing-label">Device Cost</div>
+                    <p class="pricing-desc">What we pay sellers for devices, ensuring fair market value</p>
+                </div>
+
+                <div class="pricing-item">
+                    <div class="pricing-percentage">~30%</div>
+                    <div class="pricing-label">Operations</div>
+                    <p class="pricing-desc">Testing, refurbishment, warranty, shipping, staff, rent</p>
+                </div>
+
+                <div class="pricing-item">
+                    <div class="pricing-percentage">10-20%</div>
+                    <div class="pricing-label">Profit Margin</div>
+                    <p class="pricing-desc">Our profit per transaction, reinvested into growth and service</p>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 32px; font-size: 17px; color: var(--gray);">
+                Unlike traditional retailers with 40-60% margins, our lean operation and focus on pre-owned devices allows us to offer premium products at 45% below retail while maintaining high quality standards.
+            </p>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="section">
+            <h2 class="section-title" style="text-align: center;">Why Trust Us</h2>
+            
+            <div class="trust-badges">
+                <div class="badge">
+                    <div class="badge-icon">🏢</div>
+                    <h4 class="badge-title">Physical Store</h4>
+                    <p class="badge-text">Visit us in person at our Warsaw retail location</p>
+                </div>
+
+                <div class="badge">
+                    <div class="badge-icon">✓</div>
+                    <h4 class="badge-title">ISO Certified</h4>
+                    <p class="badge-text">Quality management system certified</p>
+                </div>
+
+                <div class="badge">
+                    <div class="badge-icon">🔒</div>
+                    <h4 class="badge-title">Secure Payments</h4>
+                    <p class="badge-text">Bank-level SSL encryption</p>
+                </div>
+
+                <div class="badge">
+                    <div class="badge-icon">⭐</div>
+                    <h4 class="badge-title">5-Star Rated</h4>
+                    <p class="badge-text">Thousands of verified reviews</p>
+                </div>
+
+                <div class="badge">
+                    <div class="badge-icon">📋</div>
+                    <h4 class="badge-title">GDPR Compliant</h4>
+                    <p class="badge-text">Your data is protected</p>
+                </div>
+
+                <div class="badge">
+                    <div class="badge-icon">🛡️</div>
+                    <h4 class="badge-title">12-Month Warranty</h4>
+                    <p class="badge-text">All devices fully covered</p>
+                </div>
+
+                <div class="badge">
+                    <div class="badge-icon">🚚</div>
+                    <h4 class="badge-title">Insured Shipping</h4>
+                    <p class="badge-text">Every package is protected</p>
+                </div>
+
+                <div class="badge">
+                    <div class="badge-icon">💬</div>
+                    <h4 class="badge-title">Expert Support</h4>
+                    <p class="badge-text">Real humans ready to help</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Location -->
+        <div class="section">
+            <div class="location-section">
+                <div class="location-grid">
+                    <div class="location-info">
+                        <h3>Visit Our Store</h3>
+                        
+                        <div class="location-details">
+                            <div class="location-item">
+                                <div class="location-icon">📍</div>
+                                <div class="location-text">
+                                    <strong>Address</strong>
+                                    ul. Marszałkowska 115<br>
+                                    00-102 Warsaw, Poland
+                                </div>
+                            </div>
+
+                            <div class="location-item">
+                                <div class="location-icon">🕒</div>
+                                <div class="location-text">
+                                    <strong>Store Hours</strong>
+                                    Monday - Friday: 9:00 - 18:00<br>
+                                    Saturday: 10:00 - 16:00<br>
+                                    Sunday: Closed
+                                </div>
+                            </div>
+
+                            <div class="location-item">
+                                <div class="location-icon">📞</div>
+                                <div class="location-text">
+                                    <strong>Contact</strong>
+                                    Phone: +48 22 123 4567<br>
+                                    Email: info@webuyphones.com
+                                </div>
+                            </div>
+
+                            <div class="location-item">
+                                <div class="location-icon">🏛️</div>
+                                <div class="location-text">
+                                    <strong>Business Registration</strong>
+                                    NIP: 1234567890<br>
+                                    REGON: 123456789<br>
+                                    KRS: 0000123456
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-placeholder">
+                        🗺️
+                        <div style="position: absolute; bottom: 20px; font-size: 14px; color: #666;">
+                            Google Maps Integration
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Environmental Impact -->
+        <div class="section">
+            <h2 class="section-title">Our Environmental Impact</h2>
+            <p class="section-text">
+                The electronics industry is one of the fastest-growing waste streams globally. By extending the life of devices, we're making a real difference:
+            </p>
+
+            <div class="two-column">
+                <div class="value-card">
+                    <div class="value-icon">♻️</div>
+                    <h3 class="value-title">50,000+ Devices Saved</h3>
+                    <p class="value-text">
+                        Over 50,000 devices prevented from ending up in landfills, extending their useful life by an average of 3-4 years.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">🌱</div>
+                    <h3 class="value-title">Reduced Carbon Footprint</h3>
+                    <p class="value-text">
+                        Manufacturing new devices creates massive CO2 emissions. Each reused device saves approximately 70kg of CO2 compared to buying new.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">💧</div>
+                    <h3 class="value-title">Water Conservation</h3>
+                    <p class="value-text">
+                        Manufacturing one smartphone uses ~13,000 liters of water. By reusing devices, we've saved millions of liters.
+                    </p>
+                </div>
+
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3 class="value-title">Energy Savings</h3>
+                    <p class="value-text">
+                        Refurbishing and reusing devices requires 95% less energy than manufacturing new ones from raw materials.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-section">
+            <h3>Join Our Community</h3>
+            <p>Be part of the movement towards accessible, sustainable technology</p>
+            
+            <div class="cta-buttons">
+                <a href="shop.html" class="btn btn-primary">Shop Devices</a>
+                <a href="sell.html" class="btn btn-secondary">Sell Your Device</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>SHOP</h4>
+                <a href="shop.html#iphone">iPhone</a>
+                <a href="shop.html#macbook">Mac</a>
+                <a href="shop.html#ipad">iPad</a>
+                <a href="shop.html#imac">iMac</a>
+            </div>
+            <div class="footer-col">
+                <h4>SELL</h4>
+                <a href="sell.html">Get Quote</a>
+                <a href="tutorial.html">How It Works</a>
+                <a>Guide</a>
+                <a>Pricing</a>
+            </div>
+            <div class="footer-col">
+                <h4>SERVICES</h4>
+                <a href="tutorial.html">Warranty</a>
+                <a>Repairs</a>
+                <a>Support</a>
+                <a>Returns</a>
+            </div>
+            <div class="footer-col">
+                <h4>COMPANY</h4>
+                <a href="about.html">About</a>
+                <a>Careers</a>
+                <a>Press</a>
+                <a>Contact</a>
+            </div>
+            <div class="footer-col">
+                <h4>LEGAL</h4>
+                <a>Privacy</a>
+                <a>Terms</a>
+                <a>Returns</a>
+            </div>
+        </div>
+        <div class="footer-bottom">© 2025 WeBuyPhones. All rights reserved.</div>
+    </footer>
+</body>
+</html>
