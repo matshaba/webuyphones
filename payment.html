@@ -29,7 +29,9 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Mobile Navigation */
+        /* ============================================
+           MOBILE NAVIGATION - Bottom Bar (DEFAULT)
+           ============================================ */
         nav {
             position: fixed;
             bottom: 0;
@@ -679,8 +681,11 @@
             font-family: monospace;
         }
 
-        /* Desktop Styles */
+        /* ============================================
+           DESKTOP STYLES (768px AND UP)
+           ============================================ */
         @media (min-width: 768px) {
+            /* DESKTOP NAVIGATION - Top Bar */
             nav {
                 position: fixed;
                 top: 0;
@@ -770,6 +775,11 @@
 
             .action-buttons {
                 grid-template-columns: auto auto;
+            }
+
+            .btn-primary:hover {
+                background: #2D2D2F;
+                transform: scale(1.02);
             }
         }
 
@@ -1036,7 +1046,7 @@
                 
                 <div class="product-item">
                     <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1696446702183-cbd08e3ea3ca?w=400&auto=format&fit=crop&q=80" alt="iPhone 16 Pro Max">
+                        <img src="https://images.unsplash.com/photo-1696446702183-cbd08e3ea3ca?w=400&auto=format&fit=crop&q=80" alt="Product">
                     </div>
                     <div class="product-details">
                         <div class="product-name">iPhone 16 Pro Max</div>
@@ -1120,6 +1130,25 @@
         document.getElementById('paypal-ref').textContent = orderRef;
         document.getElementById('bank-ref').textContent = orderRef;
         document.getElementById('order-reference').textContent = orderRef;
+
+        // Load product data from sessionStorage when page loads
+        window.addEventListener('load', function() {
+            const productData = sessionStorage.getItem('selectedProduct');
+            
+            if (productData) {
+                const product = JSON.parse(productData);
+                
+                // Update product display
+                document.querySelector('.product-item .product-image img').src = product.imageUrl;
+                document.querySelector('.product-item .product-name').textContent = product.name;
+                document.querySelector('.product-item .product-specs').textContent = product.specs;
+                document.querySelector('.product-item .product-price').textContent = '$' + product.salePrice.toLocaleString();
+                
+                // Update prices
+                basePrice = product.salePrice;
+                updatePrices();
+            }
+        });
 
         function selectPayment(method) {
             selectedPaymentMethod = method;
