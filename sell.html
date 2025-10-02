@@ -28,85 +28,88 @@
             -webkit-font-smoothing: antialiased;
         }
 
+        /* ============================================
+           MOBILE NAVIGATION - Bottom Bar (DEFAULT)
+           ============================================ */
         nav {
             position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: saturate(180%) blur(20px);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
             z-index: 9999;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            padding-bottom: env(safe-area-inset-bottom, 0);
         }
 
         .nav-inner {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 22px;
-            height: 44px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+            padding: 12px 16px;
         }
 
         .logo {
-            font-size: 17px;
-            font-weight: 600;
-            letter-spacing: -0.3px;
-            cursor: pointer;
+            display: none;
         }
 
         .nav-links {
+            display: contents;
+        }
+
+        .nav-item {
             display: flex;
-            gap: 40px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--dark);
-            text-decoration: none;
-            font-size: 12px;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-            cursor: pointer;
-        }
-
-        .nav-links a:hover {
-            opacity: 1;
-        }
-
-        .nav-right {
-            display: flex;
-            gap: 20px;
+            flex-direction: column;
             align-items: center;
-        }
-
-        .icon {
-            opacity: 0.6;
+            gap: 4px;
+            padding: 8px;
+            min-height: 56px;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 500;
+            border-radius: 12px;
+            transition: all 0.2s;
             cursor: pointer;
-            transition: opacity 0.3s;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .icon:hover {
-            opacity: 1;
+        .nav-item:active {
+            transform: scale(0.95);
+            background: var(--light);
+        }
+
+        .nav-item.active {
+            color: var(--blue);
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2;
+        }
+
+        .nav-actions {
+            display: none;
         }
 
         .hero-banner {
-            margin-top: 44px;
             background: linear-gradient(135deg, var(--blue) 0%, #0077ED 100%);
-            padding: 80px 22px;
+            padding: 80px 24px 60px;
             text-align: center;
             color: #fff;
         }
 
         .hero-banner h1 {
-            font-size: 64px;
+            font-size: clamp(2rem, 8vw, 4rem);
             font-weight: 700;
-            letter-spacing: -2.5px;
+            letter-spacing: -0.03em;
             margin-bottom: 16px;
         }
 
         .hero-banner p {
-            font-size: 24px;
+            font-size: clamp(1.125rem, 4vw, 1.5rem);
             opacity: 0.9;
             max-width: 700px;
             margin: 0 auto;
@@ -114,8 +117,8 @@
 
         .sell-container {
             max-width: 800px;
-            margin: 60px auto;
-            padding: 0 22px;
+            margin: 60px auto 120px;
+            padding: 0 24px;
         }
 
         .progress-bar {
@@ -123,14 +126,15 @@
             justify-content: space-between;
             margin-bottom: 60px;
             position: relative;
+            padding: 0 20px;
         }
 
         .progress-bar::before {
             content: '';
             position: absolute;
             top: 20px;
-            left: 0;
-            right: 0;
+            left: 20px;
+            right: 20px;
             height: 2px;
             background: var(--light);
             z-index: 0;
@@ -139,7 +143,7 @@
         .progress-line {
             position: absolute;
             top: 20px;
-            left: 0;
+            left: 20px;
             height: 2px;
             background: var(--blue);
             transition: width 0.3s;
@@ -164,6 +168,7 @@
             align-items: center;
             justify-content: center;
             font-weight: 600;
+            font-size: 16px;
             margin-bottom: 8px;
             transition: all 0.3s;
         }
@@ -181,9 +186,11 @@
         }
 
         .progress-label {
-            font-size: 13px;
+            font-size: 12px;
             color: var(--gray);
             font-weight: 500;
+            text-align: center;
+            display: none;
         }
 
         .form-section {
@@ -201,16 +208,16 @@
         }
 
         .section-title {
-            font-size: 32px;
+            font-size: clamp(1.75rem, 5vw, 2rem);
             font-weight: 700;
-            letter-spacing: -1px;
+            letter-spacing: -0.02em;
             margin-bottom: 12px;
         }
 
         .section-subtitle {
-            font-size: 17px;
+            font-size: 16px;
             color: var(--gray);
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
         .form-group {
@@ -249,7 +256,7 @@
         .checkbox-group {
             display: flex;
             flex-direction: column;
-            gap: 16px;
+            gap: 12px;
         }
 
         .checkbox-item {
@@ -261,9 +268,11 @@
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.3s;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .checkbox-item:hover {
+        .checkbox-item:active {
+            transform: scale(0.98);
             background: #EBEBED;
         }
 
@@ -271,6 +280,7 @@
             width: 20px;
             height: 20px;
             cursor: pointer;
+            flex-shrink: 0;
         }
 
         .checkbox-item label {
@@ -278,19 +288,21 @@
             cursor: pointer;
             font-weight: 500;
             flex: 1;
+            font-size: 15px;
         }
 
         .upload-zone {
             border: 2px dashed rgba(0, 0, 0, 0.2);
             border-radius: 16px;
-            padding: 40px;
+            padding: 40px 24px;
             text-align: center;
             background: var(--light);
             transition: all 0.3s;
             cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .upload-zone:hover {
+        .upload-zone:active {
             border-color: var(--blue);
             background: #EBEBED;
         }
@@ -358,7 +370,7 @@
 
         .estimate-box {
             background: linear-gradient(135deg, var(--blue) 0%, #0077ED 100%);
-            padding: 32px;
+            padding: 32px 24px;
             border-radius: 20px;
             color: white;
             text-align: center;
@@ -372,9 +384,9 @@
         }
 
         .estimate-value {
-            font-size: 56px;
+            font-size: clamp(2.5rem, 8vw, 3.5rem);
             font-weight: 700;
-            letter-spacing: -2px;
+            letter-spacing: -0.03em;
         }
 
         .estimate-range {
@@ -416,22 +428,22 @@
 
         .payment-options {
             display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 16px;
             margin: 24px 0;
         }
 
         .payment-option {
-            padding: 24px;
+            padding: 20px;
             border: 2px solid rgba(0, 0, 0, 0.1);
             border-radius: 16px;
             text-align: center;
             cursor: pointer;
             transition: all 0.3s;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .payment-option:hover {
-            border-color: var(--blue);
+        .payment-option:active {
+            transform: scale(0.98);
         }
 
         .payment-option.selected {
@@ -456,20 +468,21 @@
         }
 
         .button-group {
-            display: flex;
-            gap: 16px;
+            display: grid;
+            gap: 12px;
             margin-top: 40px;
         }
 
         .btn {
-            flex: 1;
             padding: 16px 32px;
-            border-radius: 980px;
+            border-radius: 999px;
             font-size: 17px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             border: none;
+            -webkit-tap-highlight-color: transparent;
+            min-height: 56px;
         }
 
         .btn-primary {
@@ -477,9 +490,8 @@
             color: white;
         }
 
-        .btn-primary:hover {
-            background: #2D2D2F;
-            transform: scale(1.02);
+        .btn-primary:active {
+            transform: scale(0.98);
         }
 
         .btn-primary:disabled {
@@ -493,13 +505,13 @@
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
-        .btn-secondary:hover {
+        .btn-secondary:active {
             background: var(--light);
         }
 
         .success-container {
             text-align: center;
-            padding: 60px 22px;
+            padding: 40px 0;
         }
 
         .success-icon {
@@ -516,14 +528,14 @@
         }
 
         .success-title {
-            font-size: 48px;
+            font-size: clamp(2rem, 6vw, 3rem);
             font-weight: 700;
-            letter-spacing: -2px;
+            letter-spacing: -0.03em;
             margin-bottom: 16px;
         }
 
         .success-text {
-            font-size: 19px;
+            font-size: 17px;
             color: var(--gray);
             margin-bottom: 24px;
             line-height: 1.5;
@@ -551,12 +563,8 @@
 
         .info-boxes {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin: 40px 0;
-            max-width: 900px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .info-box {
@@ -580,61 +588,237 @@
 
         footer {
             background: var(--light);
-            padding: 60px 22px 40px;
-            margin-top: 100px;
+            padding: 60px 24px 100px;
+            margin-top: 60px;
         }
 
         .footer-grid {
-            max-width: 1000px;
-            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(2, 1fr);
             gap: 40px;
             margin-bottom: 40px;
         }
 
         .footer-col h4 {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 600;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
             opacity: 0.6;
+            text-transform: uppercase;
         }
 
         .footer-col a {
-            display: block;
+            display: flex;
+            align-items: center;
+            min-height: 44px;
             color: var(--dark);
             text-decoration: none;
-            font-size: 12px;
-            margin-bottom: 10px;
+            font-size: 14px;
+            margin-bottom: 8px;
             opacity: 0.8;
-            transition: opacity 0.3s;
-            cursor: pointer;
-        }
-
-        .footer-col a:hover {
-            opacity: 1;
+            -webkit-tap-highlight-color: transparent;
         }
 
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 24px;
             border-top: 1px solid rgba(0, 0, 0, 0.1);
             font-size: 12px;
             opacity: 0.6;
         }
 
-        @media (max-width: 768px) {
-            .hero-banner h1 { font-size: 40px; }
-            .progress-label { display: none; }
-            .payment-options { grid-template-columns: 1fr; }
-            .info-boxes { grid-template-columns: 1fr; }
-            .button-group { flex-direction: column-reverse; }
-            .nav-links { display: none; }
-            .footer-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
         .hidden {
             display: none;
+        }
+
+        /* ============================================
+           DESKTOP STYLES (768px AND UP)
+           ============================================ */
+        @media (min-width: 768px) {
+            /* DESKTOP NAVIGATION - Top Bar */
+            nav {
+                position: fixed;
+                top: 0;
+                bottom: auto;
+                border-top: none;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+                padding-bottom: 0;
+            }
+
+            .nav-inner {
+                grid-template-columns: auto 1fr auto;
+                padding: 0 22px;
+                height: 44px;
+                align-items: center;
+                max-width: 1000px;
+                margin: 0 auto;
+                gap: 0;
+            }
+
+            .logo {
+                display: block;
+                font-size: 17px;
+                font-weight: 600;
+                letter-spacing: -0.3px;
+                cursor: pointer;
+            }
+
+            .nav-links {
+                display: flex;
+                gap: 40px;
+                justify-content: center;
+            }
+
+            .nav-item {
+                flex-direction: row;
+                min-height: auto;
+                padding: 0;
+                font-size: 12px;
+                opacity: 0.8;
+            }
+
+            .nav-item:hover {
+                opacity: 1;
+            }
+
+            .nav-item:active {
+                transform: none;
+                background: none;
+            }
+
+            .nav-icon {
+                display: none;
+            }
+
+            .nav-actions {
+                display: flex;
+                gap: 20px;
+            }
+
+            .icon {
+                opacity: 0.6;
+                cursor: pointer;
+                transition: opacity 0.3s;
+            }
+
+            .icon:hover {
+                opacity: 1;
+            }
+
+            .hero-banner {
+                margin-top: 44px;
+                padding: 100px 22px 80px;
+            }
+
+            .hero-banner h1 {
+                font-size: 64px;
+                letter-spacing: -2.5px;
+            }
+
+            .hero-banner p {
+                font-size: 24px;
+            }
+
+            .sell-container {
+                padding: 0 22px 80px;
+            }
+
+            .progress-label {
+                display: block;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .section-subtitle {
+                font-size: 17px;
+            }
+
+            .checkbox-item:hover {
+                background: #EBEBED;
+            }
+
+            .checkbox-item:active {
+                transform: none;
+            }
+
+            .upload-zone:hover {
+                border-color: var(--blue);
+                background: #EBEBED;
+            }
+
+            .upload-zone:active {
+                transform: none;
+            }
+
+            .payment-options {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .payment-option:hover {
+                border-color: var(--blue);
+            }
+
+            .payment-option:active {
+                transform: none;
+            }
+
+            .button-group {
+                grid-template-columns: auto auto;
+            }
+
+            .btn-primary:hover {
+                background: #2D2D2F;
+                transform: scale(1.02);
+            }
+
+            .btn-primary:active {
+                transform: scale(1.02);
+            }
+
+            .btn-secondary:hover {
+                background: var(--light);
+            }
+
+            .btn-secondary:active {
+                transform: none;
+            }
+
+            .info-boxes {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            footer {
+                padding: 60px 22px 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(5, 1fr);
+                gap: 40px;
+                max-width: 1000px;
+                margin: 0 auto 40px;
+            }
+
+            .footer-col h4 {
+                font-size: 12px;
+            }
+
+            .footer-col a {
+                font-size: 12px;
+                min-height: auto;
+                cursor: pointer;
+                transition: opacity 0.3s;
+            }
+
+            .footer-col a:hover {
+                opacity: 1;
+            }
+        }
+
+        *:focus-visible {
+            outline: 2px solid var(--blue);
+            outline-offset: 2px;
         }
     </style>
 </head>
@@ -642,14 +826,45 @@
     <nav>
         <div class="nav-inner">
             <div class="logo" onclick="window.location.href='index.html'">WeBuyPhones</div>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="sell.html">Sell</a></li>
-                <li><a>Trade-In</a></li>
-                <li><a>Warranty</a></li>
-            </ul>
-            <div class="nav-right">
+            <div class="nav-links">
+                <a href="index.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    </svg>
+                    <span>Home</span>
+                </a>
+                <a href="shop.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Shop</span>
+                </a>
+                <a href="sell.html" class="nav-item active">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 6v6l4 2"></path>
+                    </svg>
+                    <span>Sell</span>
+                </a>
+                <a href="tutorial.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <path d="M12 16v-4"></path>
+                        <path d="M12 8h.01"></path>
+                    </svg>
+                    <span>How It Works</span>
+                </a>
+                <a href="about.html" class="nav-item">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    <span>About</span>
+                </a>
+            </div>
+            <div class="nav-actions">
                 <svg class="icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="11" cy="11" r="8"></circle>
                     <path d="m21 21-4.35-4.35"></path>
@@ -979,38 +1194,37 @@
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
-                <h4>SHOP</h4>
+                <h4>Shop</h4>
                 <a href="shop.html#iphone">iPhone</a>
                 <a href="shop.html#macbook">Mac</a>
                 <a href="shop.html#ipad">iPad</a>
                 <a href="shop.html#imac">iMac</a>
             </div>
             <div class="footer-col">
-                <h4>SELL</h4>
+                <h4>Sell</h4>
                 <a href="sell.html">Get Quote</a>
-                <a>Trade-In</a>
+                <a href="tutorial.html">How It Works</a>
                 <a>Guide</a>
                 <a>Pricing</a>
             </div>
             <div class="footer-col">
-                <h4>SERVICES</h4>
-                <a>Warranty</a>
-                <a>Repairs</a>
-                <a>Support</a>
-                <a>Returns</a>
-            </div>
-            <div class="footer-col">
-                <h4>COMPANY</h4>
-                <a>About</a>
+                <h4>Company</h4>
+                <a href="about.html">About</a>
+                <a href="tutorial.html">Support</a>
                 <a>Careers</a>
                 <a>Press</a>
-                <a>Contact</a>
             </div>
             <div class="footer-col">
-                <h4>LEGAL</h4>
-                <a>Privacy</a>
-                <a>Terms</a>
-                <a>Returns</a>
+                <h4>Legal</h4>
+                <a href="privacy.html">Privacy</a>
+                <a href="terms.html">Terms</a>
+                <a href="tutorial.html">Returns</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <a>Support</a>
+                <a>Email</a>
+                <a>Phone</a>
             </div>
         </div>
         <div class="footer-bottom">© 2025 WeBuyPhones. All rights reserved.</div>
